@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <title>养老金</title>
+    <link href="https://a.alipayobjects.com/amui/dpl/9.0.0.2/amui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../alipayServer/lib/weui.css">
+    <link rel="stylesheet" href="../../alipayServer/css/jquery-weui.css">
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        a{
+            color:#00aaff;
+            text-decoration: none;
+        }
+        html,body{
+            width: 100%;
+            height:100%;
+            overflow: hidden;
+            box-sizing: border-box;
+            background: #f5f5f9;
+        }
+        body{
+            background-image:url("data:image/png;base64,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");
+            background-repeat:no-repeat;
+            background-size: 114px auto;
+            background-position: center 110px;
+            padding-top:240px;
+        }
+        .notice{
+            text-align: center;
+            line-height: 18px;
+            padding:15px;
+            font-size: 12px;
+            color:#999;
+        }
+        .ybj_btn{
+            margin-top: 15px;
+            width: 90%;
+            margin-left: 5%;
+        }
+    </style>
+</head>
+<body>
+<div class="notice">
+    您的<span id="successEle"></span>账单已成功受理<br>
+    审核需要周期，请耐心等待<br>
+    审核成功后您可查看到您的<span id="successEle1"></span>月度对账单<br>
+    如有疑问，请拨打客服电话：<a href="tel:4001968888">4001-968888</a><br>
+    <div class="ybj_btn" id="ybj_btn" style="display:none;">
+        <input class="weui_btn weui_btn_blue" type="button" value="医保金余额实时查询，点这里"/>
+    </div>
+</div>
+</body>
+</html>
+
+<script src="/sanjin/page/alipayServer/lib/jquery-2.1.4.min.js" ></script>
+<script>
+    function paramJson(param) {
+        var
+            obj = {},
+            keyvalue = [],
+            key = "",
+            value = "",
+            paraString = param.split("&");
+        for (var i in paraString) {
+            keyvalue = paraString[i].split("=");
+            key = keyvalue[0];
+            value = keyvalue[1];
+            obj[key] = value;
+        }
+        return obj;
+    }
+    var
+        successEle = document.getElementById('successEle'),
+        successEle1 = document.getElementById('successEle1'),
+        ybj_btn = document.getElementById('ybj_btn'),
+        param = paramJson(window.location.search.substr(1));
+    switch (param.infoId) {
+        case '202':
+            successEle.innerHTML = '公积金';
+            successEle1.innerHTML = '公积金';
+            document.title = '公积金';
+            break;
+        case '201':
+            successEle.innerHTML = '医保金';
+            successEle1.innerHTML = '医保金';
+            document.title = '医保金';
+            // if(navigator.userAgent.toLowerCase().indexOf("alipayclient") ==-1)
+            ybj_btn.style.display="block";
+            break;
+        case '203':
+            successEle.innerHTML = '养老金';
+            successEle1.innerHTML = '养老金';
+            document.title = '养老金';
+            break;
+    }
+
+    var ybj_real_url="http://api.eshimin.com/api/oauth/authorize?client_id=i99Sl8E06T&response_type=code&redirect_uri=http://202.96.245.182:8088/sh-ybquery/eshimin/jbxx/index.html&scope=read";
+    $("#ybj_btn").click(function(){
+        window.location.replace(ybj_real_url);
+    });
+
+</script>
+<!-- 微信分享 -->
+<script src="/sanjin/page/alipayServer/lib/boot.js"></script>
+<script type="text/javascript" src="http://pingjs.qq.com/h5/stats.js" name="MTAH5" sid="500001821" cid="500041478" ></script>
